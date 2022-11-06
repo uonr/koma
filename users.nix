@@ -31,6 +31,7 @@ in {
     ];
 
     programs.vscode = { enable = true; };
+    programs.obs-studio = { enable = true; };
     home.packages = with pkgs; [ tdesktop wesnoth obsidian ];
   };
 }
