@@ -11,8 +11,14 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
-
+  # https://nixos.wiki/wiki/Impermanence
   fileSystems."/" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [ "size=3G" "mode=755" ];
+  };
+
+  fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/48c4321d-0f71-4147-91db-8e946eb8cfce";
     fsType = "btrfs";
   };
