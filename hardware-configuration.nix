@@ -4,26 +4,40 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports =
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
-  boot.initrd.availableKernelModules =
-    [ "xhci_pci" "ehci_pci" "nvme" "ahci" "sd_mod" "rtsx_usb_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "nvme" "ahci" "usb_storage" "usbhid" "sd_mod" "rtsx_usb_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/48c4321d-0f71-4147-91db-8e946eb8cfce";
-    fsType = "btrfs";
-  };
+  fileSystems."/" =
+    { device = "none";
+      fsType = "tmpfs";
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/3810-C46B";
-    fsType = "vfat";
-  };
+  fileSystems."/nix" =
+    { device = "/dev/nvme0n1p1";
+      fsType = "btrfs";
+      options = [ "subvol=nix" ];
+    };
+
+  fileSystems."/persistent" =
+    { device = "/dev/nvme0n1p1";
+      fsType = "btrfs";
+      options = [ "subvol=persistent" ];
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/5DEB-4937";
+      fsType = "vfat";
+    };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/92bc7f18-f8bf-410e-b1f2-b4dbdcf97e51"; }];
+    [ { device = "/dev/disk/by-uuid/c85c1a31-c4f7-4c0b-b07c-0a5599d86d66"; }
+    ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -33,8 +47,7 @@
   # networking.interfaces.enp2s0f0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp3s0.useDHCP = lib.mkDefault true;
 
-  hardware.cpu.amd.updateMicrocode =
-    lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   # high-resolution display
   hardware.video.hidpi.enable = lib.mkDefault true;
 }
