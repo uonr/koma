@@ -1,4 +1,7 @@
 {
+  # https://nixos.wiki/wiki/Impermanence
+  # https://github.com/nix-community/impermanence
+  # https://elis.nu/blog/2020/06/nixos-tmpfs-as-home/
   environment.persistence."/persistent" = {
     hideMounts = true;
     directories = [
@@ -20,27 +23,5 @@
         parentDirectory = { mode = "u=rwx,g=,o="; };
       }
     ];
-    # users.mikan = {
-    #   directories = [
-    #     "Downloads"
-    #     "Music"
-    #     "Pictures"
-    #     "Documents"
-    #     "Videos"
-    #     {
-    #       directory = ".ssh";
-    #       mode = "0700";
-    #     }
-    #     {
-    #       directory = ".nixops";
-    #       mode = "0700";
-    #     }
-    #     {
-    #       directory = ".local/share/keyrings";
-    #       mode = "0700";
-    #     }
-    #     ".local/share/direnv"
-    #   ];
-    # };
   };
 }

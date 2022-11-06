@@ -13,6 +13,7 @@ in {
   home-manager.users.root = { ... }: {
     imports = [ vscode-server.nixosModules.home ./home/basic.nix ];
   };
+
   users.users.mikan = {
     uid = 1000;
     shell = pkgs.zsh;
@@ -29,9 +30,34 @@ in {
       ./home/gui.nix
       ./home/development.nix
     ];
-
     programs.vscode = { enable = true; };
     programs.obs-studio = { enable = true; };
     home.packages = with pkgs; [ tdesktop wesnoth obsidian ];
+  };
+  environment.persistence."/persistent".users.mikan = {
+    directories = [
+      "Development"
+      {
+        directory = ".ssh";
+        mode = "0700";
+      }
+      ".config/Code"
+      ".config/obs-studio/"
+      ".local/share/direnv"
+
+      # TODO: move to encrypted volumn
+      {
+        directory = ".1password";
+        mode = "0700";
+      }
+      {
+        directory = ".config/1Password";
+        mode = "0700";
+      }
+      {
+        directory = ".local/share/TelegramDesktop/";
+        mode = "0700";
+      }
+    ];
   };
 }
