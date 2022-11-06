@@ -18,6 +18,7 @@
     ./virtualisation.nix
     ./keymap.nix
     ./ime.nix
+    ./persistence.nix
   ];
 
   networking.hostName = "koma"; # Define your hostname.
