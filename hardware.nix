@@ -1,6 +1,12 @@
 { pkgs, ... }:
 
 {
+  # https://nixos.wiki/wiki/Btrfs
+  fileSystems = {
+    "/nix".options = [ "compress=zstd" "noatime" ];
+    "/persistent".options = [ "compress=zstd" ];
+  };
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # https://nixos.wiki/wiki/AMD_GPU
