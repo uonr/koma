@@ -2,16 +2,9 @@
   # https://nix-community.github.io/home-manager/options.html
   services.vscode-server.enable = true;
 
-  imports = [ ./neovim.nix ./zsh.nix ];
+  imports = [ ./neovim.nix ./zsh.nix ./git.nix ];
 
   home.packages = with pkgs; [ ripgrep fd btop du-dust mosh python3 tealdeer ];
-
-  programs.git = {
-    enable = true;
-    difftastic.enable = true;
-    userEmail = "me@yuru.me";
-    userName = "Tachibana Kiyomi";
-  };
 
   programs.exa = {
     enable = true;
