@@ -3,8 +3,14 @@
 {
   # https://nixos.wiki/wiki/Btrfs
   fileSystems = {
-    "/nix".options = [ "compress=zstd" "noatime" ];
-    "/persistent".options = [ "compress=zstd" ];
+    "/nix" = {
+      neededForBoot = true;
+      options = [ "compress=zstd" "noatime" ];
+    };
+    "/persistent" = { 
+      neededForBoot = true;
+      options = [ "compress=zstd" ];
+    };
   };
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
