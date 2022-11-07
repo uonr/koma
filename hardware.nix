@@ -7,11 +7,13 @@
       neededForBoot = true;
       options = [ "compress=zstd" "noatime" ];
     };
-    "/persistent" = { 
+    "/persistent" = {
       neededForBoot = true;
       options = [ "compress=zstd" ];
     };
   };
+  # https://nixos.wiki/wiki/Xorg
+  hardware.video.hidpi.enable = true;
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
