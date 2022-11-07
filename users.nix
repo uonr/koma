@@ -45,7 +45,7 @@ in {
       ".config/obs-studio/"
       ".local/share/direnv"
 
-      # TODO: move to encrypted volumn
+      # TODO: move to encrypted volume
       {
         directory = ".1password";
         mode = "0700";
