@@ -1,5 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, ... }:
 let
+  cfg = config.home.my;
   vim-chinese-document = pkgs.vimUtils.buildVimPlugin {
     name = "vimcdoc";
     pname = "vimcdoc";
@@ -20,29 +21,31 @@ let
       sha256 = "kcjOLjY/+5p3cYSpWTK8i0u69MhgCvvNVB6zDFHjcjI=";
     };
   };
-  plugins = with pkgs.vimPlugins; [
+  basicPlugins = with pkgs.vimPlugins; [
+    vim-surround
     nvim-autopairs
     editorconfig-vim
-    vim-airline
-    vim-airline-themes
     vim-surround
-    vim-chinese-document
-    vim-easymotion
-    vim-fish
-    gruvbox
     vim-repeat
     vim-sleuth
     vim-nix
-    indent-blankline-nvim-lua
     vim-commentary
-    neovim-beacon
   ];
+  extraPlugins = with pkgs.vimPlugins;
+    lib.optionals (!cfg.lite) [
+      vim-airline
+      vim-airline-themes
+      vim-chinese-document
+      gruvbox
+      indent-blankline-nvim-lua
+      neovim-beacon
+    ];
 in {
   programs.neovim = {
     enable = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    plugins = plugins;
+    plugins = basicPlugins ++ extraPlugins;
   };
 }

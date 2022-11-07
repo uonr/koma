@@ -11,12 +11,18 @@ in {
     openssh.authorizedKeys.keys = [ sshKey ];
   };
   home-manager.users.mikan = { pkgs, ... }: {
-    imports = [
-      ./home/basic.nix
-      ./home/gui.nix
-      ./home/development.nix
-      vscode-server.nixosModules.home
-    ];
+    imports = [ ./home vscode-server.nixosModules.home ];
+
+    home.my = {
+      enable = true;
+      development = true;
+      gui = true;
+      entertainment = true;
+    };
+    programs.git = {
+      userEmail = "me@yuru.me";
+      userName = "Tachibana Kiyomi";
+    };
     programs.vscode = { enable = true; };
     programs.obs-studio = { enable = true; };
     home.packages = with pkgs; [ tdesktop wesnoth minecraft obsidian ];

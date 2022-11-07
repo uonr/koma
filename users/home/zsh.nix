@@ -1,7 +1,7 @@
-{ pkgs, ... }: {
-
-  imports = [ ./starship.nix ];
-
+{ pkgs, config, lib, ... }:
+let cfg = config.home.my;
+in {
+  imports = [ ./prompt.nix ];
   programs.zsh = {
     enable = true;
     enableAutosuggestions = false;
@@ -13,6 +13,10 @@
     dotDir = ".config/zsh";
     history.path = "$HOME/.config/zsh/.zsh_history";
     shellAliases = { doco = "docker-compose"; };
+    initExtraFirst = lib.mkIf cfg.lite ''
+      autoload -Uz promptinit
+      prompt walters
+    '';
     initExtra = builtins.readFile ./init.zsh;
     dirHashes = { };
     plugins = with pkgs; [

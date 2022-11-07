@@ -11,12 +11,13 @@ in {
     openssh.authorizedKeys.keys = [ sshKey ];
   };
   home-manager.users.mikan = { pkgs, ... }: {
-    imports = [
-      ./home/basic.nix
-      ./home/gui.nix
-      ./home/development.nix
-      vscode-server.nixosModules.home
-    ];
+    imports = [ ./home vscode-server.nixosModules.home ];
+    home.my = {
+      enable = true;
+      development = true;
+      gui = true;
+      entertainment = true;
+    };
     programs.vscode = { enable = true; };
     home.packages = with pkgs; [ teams ];
   };

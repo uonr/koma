@@ -1,6 +1,8 @@
-{ ... }: {
-  programs.starship = {
-    enable = true;
+{ config, lib, ... }:
+let cfg = config.home.my;
+in {
+  programs.starship = lib.mkIf (!cfg.lite) {
+    enable = !cfg.lite;
     settings = {
       rust = { symbol = "𝓡 "; };
       nix_shell = {

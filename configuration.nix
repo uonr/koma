@@ -11,9 +11,8 @@
     ./hardware.nix
     ./font.nix
     ./gnome.nix
-    ./users.nix
     ./nix.nix
-    ./users.nix
+    ./users
     ./tools.nix
     ./virtualisation.nix
     ./keymap.nix

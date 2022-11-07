@@ -7,6 +7,13 @@ in {
     openssh.authorizedKeys.keys = [ sshKey ];
   };
   home-manager.users.root = { ... }: {
-    imports = [ vscode-server.nixosModules.home ./home/basic.nix ];
+    imports = [ vscode-server.nixosModules.home ./home ];
+
+    home.my = { enable = true; };
+
+    programs.git = {
+      userEmail = "me@yuru.me";
+      userName = "Tachibana Kiyomi";
+    };
   };
 }
