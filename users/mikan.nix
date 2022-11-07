@@ -1,4 +1,4 @@
-{ pkgs, vscode-server, ... }:
+{ pkgs, ... }:
 let sshKey = builtins.readFile ./id-rsa.pub;
 in {
   users.users.mikan = {
@@ -11,8 +11,6 @@ in {
     openssh.authorizedKeys.keys = [ sshKey ];
   };
   home-manager.users.mikan = { pkgs, ... }: {
-    imports = [ ./home vscode-server.nixosModules.home ];
-
     home.my = {
       enable = true;
       development = true;

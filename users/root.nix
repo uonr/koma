@@ -1,4 +1,4 @@
-{ pkgs, vscode-server, ... }:
+{ pkgs, ... }:
 let sshKey = builtins.readFile ./id-rsa.pub;
 in {
   users.users.root = {
@@ -7,9 +7,12 @@ in {
     openssh.authorizedKeys.keys = [ sshKey ];
   };
   home-manager.users.root = { ... }: {
-    imports = [ vscode-server.nixosModules.home ./home ];
-
-    home.my = { enable = true; };
+    home.my = {
+      enable = true;
+      development = true;
+      gui = false;
+      entertainment = false;
+    };
 
     programs.git = {
       userEmail = "me@yuru.me";
