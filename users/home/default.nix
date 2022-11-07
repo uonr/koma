@@ -36,7 +36,7 @@ in {
 
     home.packages = with pkgs;
       let
-        basic = [ ripgrep fd btop du-dust mosh python3 tealdeer ];
+        basic = [ ripgrep fd btop du-dust python3 tealdeer ];
         gui = optionals cfg.gui [ google-chrome firefox ];
         entertainment = optionals cfg.entertainment [ yt-dlp you-get ];
         development = optionals cfg.development [
@@ -47,6 +47,7 @@ in {
           nil
           nixfmt
           hut
+          dprint
         ];
       in basic ++ gui ++ development ++ entertainment;
 

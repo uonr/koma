@@ -8,6 +8,7 @@
     nixfmt
     nil
   ];
+  programs.mosh.enable = true;
   programs.neovim = {
     enable = true;
     viAlias = true;
