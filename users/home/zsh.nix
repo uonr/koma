@@ -12,7 +12,12 @@ in {
     defaultKeymap = "emacs";
     dotDir = ".config/zsh";
     history.path = "$HOME/.config/zsh/.zsh_history";
-    shellAliases = { doco = "docker-compose"; };
+    shellAliases = {
+      doco = "docker-compose";
+      switch = "sudo nixos-rebuild switch --flake";
+      sys = "systemctl";
+      jou = "journalctl";
+    };
     initExtraFirst = lib.mkIf cfg.lite ''
       autoload -Uz promptinit
       prompt walters
