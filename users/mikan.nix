@@ -36,6 +36,8 @@ in {
       ".config/Code"
       ".config/obs-studio/"
       ".local/share/direnv"
+      ".local/share/fcitx5/rime"
+      ".config/fcitx5"
 
       # TODO: move to encrypted volume
       {
