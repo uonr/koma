@@ -32,6 +32,7 @@ in {
         directory = ".ssh";
         mode = "0700";
       }
+      ".vscode"
       ".config/Code"
       ".config/obs-studio/"
       ".local/share/direnv"
