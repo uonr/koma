@@ -110,7 +110,10 @@ in {
     programs.alacritty = mkIf cfg.gui {
       enable = true;
       # https://github.com/alacritty/alacritty/blob/master/alacritty.yml
-      settings = { window = { padding = { x = 6; }; }; };
+      settings = {
+        window = { padding = { x = 6; }; };
+        font.normal.family = "IBM Plex Mono";
+      };
     };
 
     # This value determines the Home Manager release that your
