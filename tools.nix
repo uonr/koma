@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, agenix, ... }: {
   environment.systemPackages = with pkgs; [
     git
     wget
@@ -7,6 +7,7 @@
     btop
     nixfmt
     nil
+    agenix # https://github.com/ryantm/agenix
   ];
   programs.mosh.enable = true;
   programs.neovim = {

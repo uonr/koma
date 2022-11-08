@@ -1,5 +1,5 @@
 { pkgs, ... }:
-let sshKey = builtins.readFile ./id-rsa.pub;
+let sshKey = builtins.readFile ../keys/id-rsa.kiyomi.pub;
 in {
   users.users.mikan = {
     uid = 1000;
