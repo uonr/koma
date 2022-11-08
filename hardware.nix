@@ -8,6 +8,10 @@
       neededForBoot = true;
       options = [ "compress=zstd" "noatime" ];
     };
+    "/etc/ssh" = {
+      depends = [ "/persistent" ];
+      neededForBoot = true;
+    };
     "/persistent" = {
       neededForBoot = true;
       options = [ "compress=zstd" ];
