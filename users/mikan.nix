@@ -1,13 +1,12 @@
 { pkgs, config, ... }:
 let sshKey = builtins.readFile ../keys/id-rsa.kiyomi.pub;
 in {
-  age.secrets.mikanPassword.file = ../secrets/mikan.password.age;
   users.users.mikan = {
     uid = 1000;
     shell = pkgs.zsh;
     isNormalUser = true;
     extraGroups = [ "wheel" "video" "audio" "networkmanager" ];
-    passwordFile = config.age.secrets.mikanPassword.path;
+    hashedPassword = "$6$xUup8plOl41Al1Fa$VpR3G/tKM6jzm05Rr9hHGPPAFzKWykmEJJPw6GO9i7GJj7QnFSzFyiyA48/u1myzrQOrwn8ckQk2TJln4lq/w1";
     openssh.authorizedKeys.keys = [ sshKey ];
   };
   home-manager.users.mikan = { pkgs, ... }: {
