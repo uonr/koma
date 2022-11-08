@@ -3,4 +3,7 @@ let
   mikan = builtins.readFile ../keys/id-rsa.kiyomi.pub;
 
   koma = builtins.readFile ../keys/id-ed25519.koma.pub;
-in { "mikan.password.age".publicKeys = [ koma mikan ]; }
+in {
+  "wired.host.key.age".publicKeys = [ koma mikan ];
+  "wired.host.crt.age".publicKeys = [ koma mikan ];
+}

@@ -18,6 +18,7 @@
     ./keymap.nix
     ./ime.nix
     ./persistence.nix
+    ./wired
   ];
 
   networking.hostName = "koma"; # Define your hostname.
@@ -55,6 +56,14 @@
     passwordAuthentication = false;
     permitRootLogin = "prohibit-password";
     openFirewall = true;
+  };
+
+  age.secrets.wiredHostKey.file = ./secrets/wired.host.key.age;
+  age.secrets.wiredHostCert.file = ./secrets/wired.host.crt.age;
+  services.wired = {
+    enable = true;
+    key = config.age.secrets.wiredHostKey.path;
+    cert = config.age.secrets.wiredHostCert.path;
   };
 
   # Open ports in the firewall.
