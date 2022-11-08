@@ -18,7 +18,6 @@
     ./keymap.nix
     ./ime.nix
     ./persistence.nix
-    ./wired
   ];
 
   networking.hostName = "koma"; # Define your hostname.
