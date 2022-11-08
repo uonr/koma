@@ -41,6 +41,10 @@ in {
 
       # TODO: move to encrypted volume
       {
+        directory = ".mozilla/firefox";
+        mode = "0700";
+      }
+      {
         directory = ".1password";
         mode = "0700";
       }
