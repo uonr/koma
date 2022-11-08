@@ -4,6 +4,7 @@ in {
   programs.starship = lib.mkIf (!cfg.lite) {
     enable = !cfg.lite;
     settings = {
+      hostname.ssh_symbol = "{SSH} ";
       rust = { symbol = "𝓡 "; };
       nix_shell = {
         symbol = "❆ ";

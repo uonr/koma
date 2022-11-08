@@ -8,7 +8,8 @@
       "/var/log"
       "/var/lib/bluetooth"
       "/var/lib/systemd/coredump"
-      # "/etc/NetworkManager/system-connections"
+      "/etc/ssh"
+      "/etc/NetworkManager/system-connections"
       # {
       #   directory = "/var/lib/colord";
       #   user = "colord";

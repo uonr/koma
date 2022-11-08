@@ -3,6 +3,7 @@
 {
   # https://nixos.wiki/wiki/Btrfs
   fileSystems = {
+    "/" = { options = [ "defaults" "size=4G" "mode=755" ]; };
     "/nix" = {
       neededForBoot = true;
       options = [ "compress=zstd" "noatime" ];
