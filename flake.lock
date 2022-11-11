@@ -28,11 +28,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1667898954,
-        "narHash": "sha256-VqHVeoxcOl9M6yQ+LV3yTWMb0h5Rl5yixn9PCY/MJJo=",
+        "lastModified": 1667981810,
+        "narHash": "sha256-p27zd5M+OkfND46gzbGkaHlNBZsYe95M48OJuFeuuSY=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d20e3d070c78271356a2d5d73c01f1de94586087",
+        "rev": "6ce3493a3c5c6a8f4cfa6f5f88723272e0cfd335",
         "type": "github"
       },
       "original": {
@@ -84,11 +84,11 @@
     },
     "sweet-home": {
       "locked": {
-        "lastModified": 1667907635,
-        "narHash": "sha256-h3vE2jhp2bLi/DsKGys7gEmObHoTwkSzdpigPFEiOCs=",
+        "lastModified": 1668187883,
+        "narHash": "sha256-AOk3ojyAIWqqdCR/j9MUUTr2MiknKHkztTyysS93P+Q=",
         "owner": "uonr",
         "repo": "sweet-home",
-        "rev": "abe0c17984343b1ca5e6f701e1921d25eb27c38f",
+        "rev": "fcfba699d207b17328ab62096349a27f5c1d2e78",
         "type": "github"
       },
       "original": {
@@ -134,11 +134,11 @@
     },
     "wired": {
       "locked": {
-        "lastModified": 1667906052,
-        "narHash": "sha256-tIVWMXNYKl2M2pObDeki5sFqte8djmr6pSyjDpxw4PA=",
+        "lastModified": 1667916181,
+        "narHash": "sha256-Wt6Pau9J1KcldUn0x/RGfVSk3ZIr/JZK8YcFEplWsAk=",
         "ref": "refs/heads/master",
-        "rev": "919f0c59749eb4e149aab9e7db3878d615619e10",
-        "revCount": 1,
+        "rev": "426620003562f0f38b6df63c4f642cdda340a71a",
+        "revCount": 2,
         "type": "git",
         "url": "ssh://git@github.com/wired-network/wired-nix"
       },
