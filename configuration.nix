@@ -5,14 +5,16 @@
 { config, pkgs, lib, ... }:
 
 {
-
   imports = [
     ./boot.nix
     ./hardware-configuration.nix
     ./hardware.nix
+    # Desktop
     ./font.nix
     ./gnome.nix
     ./kde.nix
+    ./sway.nix
+
     ./nix.nix
     ./users
     ./tools.nix
@@ -23,7 +25,7 @@
   ];
   options = { desktop = lib.mkOption { type = lib.types.str; }; };
   config = {
-    desktop = "kde";
+    desktop = "sway";
 
     networking.hostName = "koma"; # Define your hostname.
     # Pick only one of the below networking options.
@@ -76,10 +78,7 @@
     # Or disable the firewall altogether.
     networking.firewall.enable = true;
 
-    # Copy the NixOS configuration file and link it from the resulting system
-    # (/run/current-system/configuration.nix). This is useful in case you
-    # accidentally delete configuration.nix.
-    # system.copySystemConfiguration = true;
+    security.polkit.enable = true;
 
     # This value determines the NixOS release from which the default
     # settings for stateful data, like file locations and database versions

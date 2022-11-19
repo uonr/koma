@@ -6,7 +6,8 @@ in {
     shell = pkgs.zsh;
     isNormalUser = true;
     extraGroups = [ "wheel" "video" "audio" "networkmanager" ];
-    hashedPassword = "$6$xUup8plOl41Al1Fa$VpR3G/tKM6jzm05Rr9hHGPPAFzKWykmEJJPw6GO9i7GJj7QnFSzFyiyA48/u1myzrQOrwn8ckQk2TJln4lq/w1";
+    hashedPassword =
+      "$6$xUup8plOl41Al1Fa$VpR3G/tKM6jzm05Rr9hHGPPAFzKWykmEJJPw6GO9i7GJj7QnFSzFyiyA48/u1myzrQOrwn8ckQk2TJln4lq/w1";
     openssh.authorizedKeys.keys = [ sshKey ];
   };
   home-manager.users.mikan = { pkgs, ... }: {
@@ -23,6 +24,8 @@ in {
     programs.vscode = { enable = true; };
     programs.obs-studio = { enable = true; };
     home.packages = with pkgs; [ tdesktop wesnoth minecraft obsidian ];
+    home.file = { ".config/sway/config" = { source = ../sway.conf; }; };
+
   };
   environment.persistence."/persistent".users.mikan = {
     directories = [

@@ -47,13 +47,15 @@ in {
   environment.variables.VK_ICD_FILENAMES =
     "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
 
-  sound.enable = false;
+  # PulseAudio
+  sound = lib.mkIf enablePulseAudio { enable = true; };
   hardware.pulseaudio = lib.mkIf enablePulseAudio {
     enable = true;
     support32Bit = true;
   };
   nixpkgs.config = lib.mkIf enablePulseAudio { pulseaudio = true; };
 
+  # PipeWire
   # https://nixos.wiki/wiki/PipeWire
   security.rtkit = lib.mkIf enablePipewire { enable = true; };
   services.pipewire = lib.mkIf enablePipewire {
