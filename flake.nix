@@ -10,6 +10,7 @@
 
     wired.url = "git+ssh://git@github.com/wired-network/wired-nix";
     sweet-home.url = "github:uonr/sweet-home";
+    sweet-home.inputs.nixpkgs.follows = "nixpkgs";
 
     impermanence.url = "github:nix-community/impermanence";
   };
