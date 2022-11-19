@@ -1,6 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
-{
+let
+  sound = "pulseaudio";
+  enablePipewire = sound == "pipewire";
+  enablePulseAudio = sound == "pulseaudio";
+in {
   # https://nixos.wiki/wiki/Btrfs
   fileSystems = {
     "/" = { options = [ "defaults" "size=4G" "mode=755" ]; };
@@ -43,8 +47,18 @@
   environment.variables.VK_ICD_FILENAMES =
     "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
 
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
-  nixpkgs.config.pulseaudio = true;
+  sound.enable = false;
+  hardware.pulseaudio = lib.mkIf enablePulseAudio {
+    enable = true;
+    support32Bit = true;
+  };
+  nixpkgs.config = lib.mkIf enablePulseAudio { pulseaudio = true; };
+
+  # https://nixos.wiki/wiki/PipeWire
+  security.rtkit = lib.mkIf enablePipewire { enable = true; };
+  services.pipewire = lib.mkIf enablePipewire {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+  };
 }
